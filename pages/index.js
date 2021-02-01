@@ -1,209 +1,85 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import { Template, Panel, NotificationBanner } from 'govuk-react-jsx';
+
+const headerProps = {
+    serviceName: 'Service Name',
+    serviceUrlHref: '/components/header',
+    navigation: [
+        {
+            active: true,
+            children: [
+                <em key="0">Navigation item 1</em>
+            ],
+            href: '#1'
+        },
+        {
+            children: [
+                <em key="0">Navigation item 2</em>
+            ],
+            href: '#2'
+        },
+        {
+            children: [
+                <em key="0">Navigation item 3</em>
+            ],
+            href: '#3'
+        }
+    ]
+};
 
 export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    return (
+        <div className="container">
+            <Head>
+                <title>Create Next App</title>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
 
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+            <Template
+                beforeContent={<p className="govuk-body">Before content goes here</p>}
+                containerClassName="custom-container-class-name"
+                footer={undefined}
+                header={headerProps}
+                mainClassName="custom-main-class-name"
+                title="Custom title here">
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+                <main>
+                    <NotificationBanner titleId="govuk-notification-banner-title">
+                        <p className="govuk-notification-banner__heading">
+                            You have 9 days to send a response.
+                        </p>
+                    </NotificationBanner>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+                    <h1 className="govuk-heading-xl">govuk-react-jsx with Next JS</h1>
+                    <h2 className="govuk-heading-l">Typography</h2>
+                    <p className="govuk-body">
+                        govuk-react-jsx makes direct use of{' '}
+                        <a
+                            className="govuk-link"
+                            href="https://design-system.service.gov.uk/styles/typography/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            govuk-frontend
+                        </a>{' '}
+                        styles for things such as typography
+                    </p>
+                    <h2 className="govuk-heading-m">Medium Heading</h2>
+                    <h3 className="govuk-heading-s">Small Heading</h3>
+                    <p className="govuk-body-l">Large paragraph</p>
+                    <p className="govuk-body">Standard paragraph</p>
+                    <p className="govuk-body-s">Small paragraph</p>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+                    <p className="govuk-body">
+                        Use this design system to make your service consistent with GOV.UK.
+                    </p>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+                    <Panel titleChildren="Application complete">
+                        Your reference number: HDJ2123F
+                    </Panel>
+                </main>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            </Template>
         </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+    )
 }
